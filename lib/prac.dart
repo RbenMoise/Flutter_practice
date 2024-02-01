@@ -1,7 +1,10 @@
 // ignore_for_file: prefer_const_constructors, use_function_type_syntax_for_parameters, avoid_types_as_parameter_names, non_constant_identifier_names
 
+import 'dart:js_util';
+
 import 'package:flutter/material.dart';
 import 'package:netninja_tutorial/avator.dart';
+import 'package:netninja_tutorial/quote_card.dart';
 import 'quote.dart';
 
 class MyWidget extends StatefulWidget {
@@ -23,17 +26,11 @@ class _MyWidgetState extends State<MyWidget> {
     Quote(text: 'thwe schre', author: 'authoer')
   ];
 
-  Widget QuoteTemplate(quote) {
-    return Card(
-      margin: EdgeInsets.all(10),
-      child: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [Text(quote.text), Text(quote.author)]),
-      ),
-    );
-  }
+  // Widget QuoteTemplate(quote) {
+  //   return quotecard(
+  //     quote: quote,
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +51,15 @@ class _MyWidgetState extends State<MyWidget> {
           avator(),
           Divider(),
           Column(
-            children: quotes.map((quote) => QuoteTemplate(quote)).toList(),
+            children: quotes
+                .map((quote) => quotecard(
+                    quote: quote,
+                    delete: () {
+                      setState(() {
+                        quotes.remove(quote);
+                      });
+                    }))
+                .toList(),
           )
         ]),
       ),
