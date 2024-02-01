@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, unused_import
 
 import 'package:flutter/material.dart';
+import 'package:netninja_tutorial/pages/choose_location.dart';
 import 'package:netninja_tutorial/pages/home.dart';
 import 'package:netninja_tutorial/pages/loading.dart';
 import 'package:netninja_tutorial/prac.dart';
@@ -22,7 +23,13 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Home(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => Loading(),
+        '/home': (context) => Home(),
+        '/choose_location': (context) => ChooseLocation()
+      },
+
       // MyWidget()
     );
   }

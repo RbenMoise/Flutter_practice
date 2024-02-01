@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, avoid_print
+
 import 'package:flutter/material.dart';
 
 class ChooseLocation extends StatefulWidget {
@@ -8,10 +10,35 @@ class ChooseLocation extends StatefulWidget {
 }
 
 class _ChooseLocationState extends State<ChooseLocation> {
+  void getData(BuildContext context) async {
+    String name = await Future.delayed(Duration(seconds: 2), () {
+      return 'name';
+    });
+
+    String bio = await Future.delayed(Duration(seconds: 2), () {
+      return 'student in the hostel';
+    });
+    print('$name' '$bio');
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    print('init');
+    getData(context);
+    print('');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Text('choose location screen'),
+      appBar: AppBar(
+        backgroundColor: Colors.blue[900],
+        title: Text('Choose Location'),
+        centerTitle: true,
+        elevation: 0,
+      ),
     );
   }
 }

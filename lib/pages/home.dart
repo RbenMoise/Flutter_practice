@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 
@@ -13,7 +13,23 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Text('Home Screen'),
+      body: Column(
+        children: [
+          TextButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/choose_location');
+            },
+            child: Row(
+              children: [
+                Icon(
+                  Icons.edit_location,
+                ),
+                Text('change location')
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }
