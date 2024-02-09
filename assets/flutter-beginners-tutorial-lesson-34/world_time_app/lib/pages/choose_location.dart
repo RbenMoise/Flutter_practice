@@ -1,27 +1,14 @@
-// ignore_for_file: prefer_const_constructors, avoid_print
+// ignore_for_file: prefer_const_constructors, library_private_types_in_public_api, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
 import 'package:netninja_tutorial/services/world_time.dart';
 
 class ChooseLocation extends StatefulWidget {
-  const ChooseLocation({super.key});
-
   @override
-  State<ChooseLocation> createState() => _ChooseLocationState();
+  _ChooseLocationState createState() => _ChooseLocationState();
 }
 
 class _ChooseLocationState extends State<ChooseLocation> {
-  void getData(BuildContext context) async {
-    String name = await Future.delayed(Duration(seconds: 2), () {
-      return 'name';
-    });
-
-    String bio = await Future.delayed(Duration(seconds: 2), () {
-      return 'student in the hostel';
-    });
-    print('$name' '$bio');
-  }
-
   List<WorldTime> locations = [
     WorldTime(url: 'Europe/London', location: 'London', flag: 'uk.png'),
     WorldTime(url: 'Europe/Berlin', location: 'Athens', flag: 'greece.png'),
@@ -35,36 +22,37 @@ class _ChooseLocationState extends State<ChooseLocation> {
 
   @override
   void initState() {
-    //
     super.initState();
-    print('init');
-    getData(context);
-    print('');
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
         backgroundColor: Colors.blue[900],
-        title: Text('Choose Location'),
+        title: Text('Choose a Location'),
         centerTitle: true,
         elevation: 0,
       ),
       body: ListView.builder(
-        itemCount: locations.length,
-        itemBuilder: (context, index) {
-          return Card(
-            child: ListTile(
-                onTap: () {},
-                leading: CircleAvatar(
-                  backgroundImage:
-                      AssetImage('assets/Work Images/${locations[index].flag}'),
+          itemCount: locations.length,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
+              child: Card(
+                child: ListTile(
+                  onTap: () {},
+                  title: Text(locations[index].location),
+                  leading: CircleAvatar(
+                    backgroundImage:
+                        AssetImage('assets/${locations[index].flag}'),
+                  ),
                 ),
-                title: Text(locations[index].location)),
-          );
-        },
-      ),
+              ),
+            );
+          }),
     );
   }
 }
