@@ -5,6 +5,7 @@ import 'package:netninja_tutorial/pages/choose_location.dart';
 import 'package:netninja_tutorial/pages/home.dart';
 import 'package:netninja_tutorial/pages/loading.dart';
 import 'package:netninja_tutorial/prac.dart';
+import 'package:netninja_tutorial/services/world_time.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
+
       initialRoute: '/',
       routes: {
         '/': (context) => Loading(),

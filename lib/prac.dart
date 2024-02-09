@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors, use_function_type_syntax_for_parameters, avoid_types_as_parameter_names, non_constant_identifier_names
 
-import 'dart:js_util';
+// import 'dart:js_util';
 
 import 'package:flutter/material.dart';
 import 'package:netninja_tutorial/avator.dart';
